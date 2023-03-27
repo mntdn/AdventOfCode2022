@@ -55,6 +55,35 @@ namespace AdventCode2022
 
         public void Solution2()
         {
+            string[] lines = File.ReadAllLines("10\\input.txt");
+            int curCycle = 0;
+            int curValue = 1;
+            List<int> execQueue = new List<int>();
+            string finalRender = "";
+
+            foreach (string l in lines)
+            {
+                string[] cmd = l.Split(" ");
+
+                if (cmd[0] == "addx")
+                {
+                    execQueue.Add(0);
+                    execQueue.Add(int.Parse(cmd[1]));
+                }
+                else
+                    execQueue.Add(0);
+            }
+
+            while (curCycle < execQueue.Count)
+            {
+                curValue += execQueue[curCycle];
+                finalRender += (curValue - 1 <= ((curCycle % 40) + 1) && ((curCycle % 40) + 1) <= curValue + 1) ? "#" : ".";
+                curCycle++;
+                if (((curCycle % 40) + 1) == 1)
+                    finalRender += Environment.NewLine;
+            }
+
+            Console.WriteLine(finalRender);
         }
     }
 }
