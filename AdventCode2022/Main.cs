@@ -1,4 +1,4 @@
 ﻿using AdventCode2022;
 
-var travail = new Day10();
+var travail = new Day11();
 travail.Solution2();
